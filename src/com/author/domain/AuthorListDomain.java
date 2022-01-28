@@ -10,7 +10,6 @@ import com.authordomaindetails.app.AuthorDetailsDomain;
 ;
 
 public class AuthorListDomain {
-
 	//private variable
 	private int authorId;
 	private String authorName;
