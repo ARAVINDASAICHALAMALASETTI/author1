@@ -13,6 +13,7 @@ public class AuthorListDomain {
 	//private variable
 	private int authorId;
 	private String authorName;
+	private String gender;
 	private String bornDate;
 	private String bornLocation;
 	private String bookTheme;
@@ -22,11 +23,12 @@ public class AuthorListDomain {
 	public Map<Integer, AuthorDetailsDomain> secondDomainDetails = new HashMap<>();
 	//constructor with arguments
 	
-	public AuthorListDomain(String authorName, String born, String bornLocation, String bookTheme, int numberOfBooksPublished,
+	public AuthorListDomain(String authorName,String gender, String born, String bornLocation, String bookTheme, int numberOfBooksPublished,
 			LocalDate lastBookPublishDate, int authorId,Map<Integer, AuthorDetailsDomain> secondDomainDetails) {
 		
 		this.authorId = authorId;
 		this.authorName = authorName;
+		this.gender = gender;
 		this.bornDate = born;
 		this.bornLocation = bornLocation;
 		this.bookTheme = bookTheme;
@@ -36,11 +38,12 @@ public class AuthorListDomain {
 		
 	}
 	
-	public AuthorListDomain(String authorName, String born, String bornLocation, String bookTheme, int numberOfBooksPublished,
+	public AuthorListDomain(String authorName,String gender, String born, String bornLocation, String bookTheme, int numberOfBooksPublished,
 			LocalDate lastBookPublishDate, int authorId) {
 		
 		this.authorId = authorId;
 		this.authorName = authorName;
+		this.gender = gender;
 		this.bornDate = born;
 		this.bornLocation = bornLocation;
 		this.bookTheme = bookTheme;
@@ -69,7 +72,15 @@ public class AuthorListDomain {
 	public void setAuthorName(String authorName) {
 		this.authorName = authorName;
 	}
+	
+	public String getGender() {
+		return gender;
+	}
 
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
 	public String getBorn() {
 		return bornDate;
@@ -128,14 +139,17 @@ public class AuthorListDomain {
 	public void setupdateDate(LocalDate updateDate) {
 		this.updateDate = updateDate;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "AuthorsList [authorId= " + authorId +",+authorName=" + authorName + ", born=" + bornDate + ", bornLocation=" + bornLocation
-				+ ", theme=" + bookTheme + ", numberOfBooksPublished=" + numberOfBooksPublished + ", publishDate="
-				+ lastBookPublishDate + "]";
+		return "AuthorListDomain [authorId=" + authorId + ", authorName=" + authorName + ", gender=" + gender
+				+ ", bornDate=" + bornDate + ", bornLocation=" + bornLocation + ", bookTheme=" + bookTheme
+				+ ", numberOfBooksPublished=" + numberOfBooksPublished + ", lastBookPublishDate=" + lastBookPublishDate
+				+ ", updateDate=" + updateDate + ", secondDomainDetails=" + secondDomainDetails + "]";
 	}
+	
+	
+	
 		
 }
 

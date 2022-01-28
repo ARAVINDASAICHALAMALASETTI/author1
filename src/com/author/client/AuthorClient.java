@@ -22,13 +22,13 @@ public class AuthorClient {
 	public static void main(String[] args) {
 
 		// create person one object
-		AuthorListDomain person1 = new AuthorListDomain(" StepenKing", "1978-6-18", " Portland,UnitedStates", " Mystery", 10, LocalDate.of(2018,6,18), 1);
+		AuthorListDomain person1 = new AuthorListDomain(" StepenKing","Male", "1978-6-18", " Portland,UnitedStates", " Mystery", 10, LocalDate.of(2018,6,18), 1);
 
-		AuthorListDomain person2 = new AuthorListDomain(" JohnRubino", "1962-2-10", " Kanto,Japan", " HOPELESS ", 15,LocalDate.of(2016,10,19), 2);
+		AuthorListDomain person2 = new AuthorListDomain(" JohnRubino","Female", "1962-2-10", " Kanto,Japan", " HOPELESS ", 15,LocalDate.of(2016,10,19), 2);
  
-		AuthorListDomain person3 = new AuthorListDomain(" HoffMann", "1989-8-28", " Moscow,Russia", " Thriller", 12, LocalDate.of(2011,6,10), 3);
+		AuthorListDomain person3 = new AuthorListDomain(" HoffMann","Male", "1989-8-28", " Moscow,Russia", " Thriller", 12, LocalDate.of(2011,6,10), 3);
 		
-		AuthorListDomain person4 = new AuthorListDomain(" JamesTrunk", "1958-11-5", " Moscow,Russia", " Thriller", 18, LocalDate.of(2013, 6, 10), 4);
+		AuthorListDomain person4 = new AuthorListDomain(" JamesTrunk","Female", "1958-11-5", " Moscow,Russia", " Thriller", 18, LocalDate.of(2013, 6, 10), 4);
 
 		AuthorService authorService = new AuthorListJdbcImpl();
 
@@ -51,7 +51,7 @@ public class AuthorClient {
 		System.out.println(authorService.sortByAuthorName());*/
 
 		//System.out.println(authorService.createTable());
-		//System.out.println(authorService.add(person3));
+		System.out.println(authorService.add(person1));
 		//System.out.println(authorService.getallAuthorDetails());
 		//System.out.println(authorService.updateAuthorBooksCountDateDetails(person3, 16));
 		//System.out.println(authorService.remove(person3));

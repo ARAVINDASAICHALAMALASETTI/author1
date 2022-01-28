@@ -10,9 +10,9 @@ import com.author.domain.AuthorListDomain;
 
 public class AuthorServiceJdbcUtil  {
 
-	String url = "Jdbc:mysql://localhost:3306/author_details";
+	String url = "Jdbc:mysql://localhost:3306/authordetails";
 	String userName = "root";
-	String password = "12345";
+	String password = "1234";
 	Statement statement;
 	Connection connection;
 	
@@ -29,7 +29,7 @@ public class AuthorServiceJdbcUtil  {
 	}
 	public void createTable() throws Exception{
 			getConnection();
-			statement.executeUpdate("create table authortable(Author_Id int, Author_name  varchar(255), Birth_year  date, Birth_place  varchar(255), Book_Theme  varchar(255), Books_published_count  int,Last_Book_Publish_Date date)");
+			statement.executeUpdate("create table authortable(Author_Id int, Author_name  varchar(255),Gender varchar(20), Birth_year  date, Birth_place  varchar(255), Book_Theme  varchar(255), Books_published_count  int,Last_Book_Publish_Date date)");
 				
 			System.out.println("author information table created");
 		
@@ -40,14 +40,15 @@ public class AuthorServiceJdbcUtil  {
 		getConnection();
 		try {
 
-			PreparedStatement pst = connection.prepareStatement("insert into authortable Values(?,?,?,?,?,?,?)");
+			PreparedStatement pst = connection.prepareStatement("insert into authortable Values(?,?,?,?,?,?,?,?)");
 			pst.setInt(1, person.getAuthorId());
 			pst.setString(2, person.getAuthorName());
-			pst.setDate(3, Date.valueOf(person.getBorn()));
-			pst.setString(4, person.getBornLocation());
-			pst.setString(5, person.getBookTheme());
-			pst.setInt(6, person.getNumberOfBooksPublished());
-			pst.setDate(7, Date.valueOf(person.getlastBookPublishDate()));
+			pst.setString(3, person.getGender());
+			pst.setDate(4, Date.valueOf(person.getBorn()));
+			pst.setString(5, person.getBornLocation());
+			pst.setString(6, person.getBookTheme());
+			pst.setInt(7, person.getNumberOfBooksPublished());
+			pst.setDate(8, Date.valueOf(person.getlastBookPublishDate()));
 			pst.execute();
 			return true;
 		}catch (SQLException e) {
@@ -114,6 +115,7 @@ public class AuthorServiceJdbcUtil  {
 			while (rs.next()){
 				int authorId =   rs.getInt("Author_Id");
 				String authorName = rs.getString("Author_name");
+				String gender = rs.getString("Gender");
 				String born =  rs.getString("Birth_year");
 				String bornDate =  String.valueOf(born);
 				String bornLocation =  rs.getString("Birth_place");
@@ -121,7 +123,7 @@ public class AuthorServiceJdbcUtil  {
 				int numberOfBooksPublished =  rs.getInt("Books_published_count");
 				LocalDate publishDate = rs.getDate("Books_publish_Date").toLocalDate();
 				
-				person.add(new AuthorListDomain (authorName,bornDate,bornLocation,theme,numberOfBooksPublished,publishDate,authorId));
+				person.add(new AuthorListDomain (authorName,gender,bornDate,bornLocation,theme,numberOfBooksPublished,publishDate,authorId));
 
 		}
 		}catch (SQLException e) {
@@ -158,6 +160,7 @@ public class AuthorServiceJdbcUtil  {
 			while (rs.next()){
 				int authorId =   rs.getInt("Author_Id");
 				String authorName = rs.getString("Author_name");
+				String gender = rs.getString("Gender");
 				String born =  rs.getString("Birth_year");
 				String bornDate =  String.valueOf(born);
 				String bornLocation =  rs.getString("Birth_place");
@@ -165,7 +168,7 @@ public class AuthorServiceJdbcUtil  {
 				int numberOfBooksPublished =  rs.getInt("Books_published_count");
 				LocalDate publishDate = rs.getDate("Books_publish_Date").toLocalDate();
 				
-				person.add(new AuthorListDomain (authorName,bornDate,bornLocation,theme,numberOfBooksPublished,publishDate,authorId));
+				person.add(new AuthorListDomain (authorName,gender,bornDate,bornLocation,theme,numberOfBooksPublished,publishDate,authorId));
 
 		}
 		}catch (SQLException e) {

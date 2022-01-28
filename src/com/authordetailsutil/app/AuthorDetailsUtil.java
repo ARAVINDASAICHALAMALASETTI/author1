@@ -12,9 +12,9 @@ import com.authordomaindetails.app.AuthorDetailsDomain;
 
 public class AuthorDetailsUtil {
 
-	String url = "Jdbc:mysql://localhost:3306/author_details";
+	String url = "Jdbc:mysql://localhost:3306/authordetails";
 	String userName = "root";
-	String password = "12345";
+	String password = "1234";
 	Statement statement;
 	Connection connection;
 	
